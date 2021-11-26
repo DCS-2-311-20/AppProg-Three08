@@ -1,13 +1,8 @@
 //
-// 応用プログラミング 課題11 (three0801.js)
+// 応用プログラミング 課題10 (three0801.js) G084002020 拓殖太郎
 // $Id$
 //
 "use strict"; // 厳格モード
-
-// ライブラリをモジュールとして読み込む
-import * as THREE from "./js/three.module.js";
-import * as dat from "./js/dat.gui.module.js";
-import {CSS3DRenderer, CSS3DObject} from "./js/CSS3DRenderer.js"
 
 function init() {
   // カメラ位置のパラメータ
@@ -41,7 +36,7 @@ function init() {
   }
 
   // レンダラ設定
-  const cssRenderer = new CSS3DRenderer();
+  const cssRenderer = new THREE.CSS3DRenderer();
   cssRenderer.setSize(window.innerWidth, window.innerHeight);
   document.getElementById("WebGL-output").appendChild(cssRenderer.domElement);
 
@@ -59,7 +54,7 @@ function init() {
   div.appendChild( iframe );
 
   // CSS3Dオブジェクトを作って，シーンに追加
-  const object = new CSS3DObject( div );
+  const object = new THREE.CSS3DObject( div );
   object.position.set( 0, 0, 0 );
   scene.add(object);
 
@@ -67,11 +62,12 @@ function init() {
   window.addEventListener("resize", ()=>{
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight);
+    cssRenderer.setSize( window.innerWidth, window.innerHeight);
   }, false );
 
   // アニメーション
   function update() {
+
     cssRenderer.render(scene, camera);
     requestAnimationFrame(update);
   }

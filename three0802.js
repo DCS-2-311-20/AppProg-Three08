@@ -1,13 +1,8 @@
 //
-// 応用プログラミング 課題11 (three0801.js)
+// 応用プログラミング 課題10 (three0802.js) G084002020 拓殖太郎
 // $Id$
 //
 "use strict"; // 厳格モード
-
-// ライブラリをモジュールとして読み込む
-import * as THREE from "./js/three.module.js";
-import * as dat from "./js/dat.gui.module.js";
-import {CSS3DRenderer, CSS3DObject} from "./js/CSS3DRenderer.js"
 
 // ３Ｄページ作成関数の定義
 function init() {
@@ -42,7 +37,7 @@ function init() {
   // 第2のレンダラ
 
   // Css3Dレンダラ
-  const cssRenderer = new CSS3DRenderer();
+  const cssRenderer = new THREE.CSS3DRenderer();
   {
     cssRenderer.setSize(window.innerWidth, window.innerHeight);
     cssRenderer.domElement.style.position = "absolute";
@@ -83,7 +78,7 @@ function init() {
   // Markerの生成
 
   // CSS3D表示のための設定
-    // div要素の生成
+  // div要素の生成
   const div = document.createElement( 'div' );
   div.style.width = "640px";
   div.style.height = "360px";
@@ -93,12 +88,12 @@ function init() {
   iframe.style.width = "640px";
   iframe.style.height = "360px";
   iframe.style.border = "0px";
-  iframe.src = "https://www.youtube.com/embed/w23RIKTYF28?version=3"
+  iframe.src = "https://www.youtube.com/embed/?version=3"
       +"&mute=1&autoplay=1&controls=0"
-      +"&loop=1&playlist=-9pMuSNlN6A";
+      +"&loop=1&playlist=-9pMuSNlN6A,w23RIKTYF28";
   div.appendChild( iframe );
   // CSSオブジェクトの生成
-  const cssObject = new CSS3DObject(div);
+  const cssObject = new THREE.CSS3DObject(div);
   cssObject.scale.x *= 8/640;
   cssObject.scale.y *= 8/640;
   //cssObject.position.copy(screen.position);
